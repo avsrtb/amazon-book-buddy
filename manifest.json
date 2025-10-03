@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Book Buddy (Pros, Cons, Trivia)",
+  "version": "1.0.0",
+  "description": "On Amazon book pages, shows quick trivia plus pros & cons distilled from reviews. 100% free and local.",
+  "action": {
+    "default_title": "Should I read this?",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "https://www.amazon.com/*",
+    "https://www.amazon.co.uk/*",
+    "https://www.amazon.ca/*",
+    "https://www.amazon.de/*",
+    "https://www.amazon.in/*",
+    "https://openlibrary.org/*",
+    "https://en.wikipedia.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.amazon.com/*",
+        "*://www.amazon.co.uk/*",
+        "*://www.amazon.ca/*",
+        "*://www.amazon.de/*",
+        "*://www.amazon.in/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
